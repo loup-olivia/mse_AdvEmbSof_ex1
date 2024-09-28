@@ -1,0 +1,33 @@
+name: ARM Embedded Build and Test
+
+# Trigger this action on any push or pull request to the main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checkout the code from GitHub
+
+    - name: Install ARM Toolchain
+      run: sudo apt-get install -y gcc-arm-none-eabi  # Install ARM GCC toolchain
+
+    - name: Install Python Dependencies
+      run: pip install pyocd  # Install pyOCD or any required dependencies
+
+    - name: Build the Project
+      run: |
+        make clean  # Clean the previous build
+        make all  # Build your project using make
+
+    - name: Run Unit Tests
+      run: |
+        ceedling test:all  # Example for running tests with Ceedling
