@@ -23,5 +23,6 @@ int main()
         led = !led;
         ThisThread::sleep_for(BLINKING_RATE);
         printf("test\n");
+        // add other test
     }
 }
