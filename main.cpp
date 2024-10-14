@@ -13,7 +13,7 @@
 #if defined(MBED_CONF_MBED_TRACE_ENABLE)
 #define TRACE_GROUP  "MAIN"
 #endif // MBED_CONF_MBED_TRACE_ENABLE
-
+//aled
 
 int main()
 {
@@ -27,5 +27,6 @@ int main()
     while (true) {
         led = !led;
         ThisThread::sleep_for(BLINKING_RATE);
+        tr_info("pls\n");
     }
 }
